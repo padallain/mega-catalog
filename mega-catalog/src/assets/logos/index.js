@@ -5,7 +5,7 @@ import lipton from "./lipton-fondo.png";
 import tresB from "./b-fondo.png";
 import glup from "./glup-fondo.png";
 import lumalac from "./lumalac-fondo.png";
-import delcampo from "./delCampo-fondo.png";
+import delcampo from "./delcampo-fondo.png";
 import esmeralda from "./esmeralda-fondo.png";
 import vero from "./vero-fondo.png";
 
