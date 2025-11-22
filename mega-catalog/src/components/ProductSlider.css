@@ -1,0 +1,159 @@
+// ...existing code...
+/* layout base: ocupa todo el ancho del contenedor padre */
+.brands-slider-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 1rem;
+}
+
+/* fila principal */
+.brands-slider-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* contenido del slide: imagen + info */
+.brands-slider-content {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  transition: transform 0.4s cubic-bezier(.77,0,.18,1);
+}
+
+/* Imagen: ocupa más espacio en desktop, se reduce en móvil */
+.brands-slider-img-container {
+  flex: 0 0 60%; /* desktop: 60% del ancho del slide */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 280px;
+  max-width: 900px;
+  height: auto;
+}
+
+.brands-slider-img {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  display: block;
+}
+
+/* Info: algo más ancha que antes para mejor lectura */
+.brands-slider-info {
+  flex: 1 1 40%; /* desktop: 40% */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0.5rem 0.5rem;
+  box-sizing: border-box;
+}
+
+.brands-slider-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8rem;
+  color: #333;
+  text-align: left;
+}
+
+.brands-slider-desc {
+  font-size: 1rem;
+  margin: 0.25rem 0 1rem 0;
+  color: #555;
+  text-align: left;
+}
+
+/* controles (botones) más accesibles en pantallas pequeñas */
+.brands-slider-btn {
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  cursor: pointer;
+  color: #555;
+  padding: 0.25rem 0.5rem;
+}
+.brands-slider-btn:hover {
+  color: #a259e6;
+}
+
+/* Responsive: pantallas medianas */
+@media (max-width: 1000px) {
+  .brands-slider-content {
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .brands-slider-img-container {
+    flex: 0 0 70%;
+    min-width: 220px;
+  }
+  .brands-slider-info {
+    flex: 1 1 30%;
+    padding: 0.25rem 0.5rem;
+  }
+  .brands-slider-title {
+    font-size: 1.6rem;
+  }
+  .brands-slider-desc {
+    font-size: 0.98rem;
+  }
+}
+
+/* Responsive: móviles (apilar verticalmente) */
+@media (max-width: 700px) {
+  .brands-slider-row {
+    padding: 0;
+  }
+  .brands-slider-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem;
+  }
+  .brands-slider-img-container {
+    width: 85%;
+    flex: 0 0 auto;
+    min-width: unset;
+  }
+  .brands-slider-info {
+    width: 100%;
+    flex: none;
+    align-items: center;
+    text-align: center;
+    padding: 0.75rem 0.5rem;
+  }
+  .brands-slider-title {
+    font-size: 1.4rem;
+  }
+  .brands-slider-desc {
+    font-size: 0.95rem;
+  }
+  .brands-slider-btn {
+    font-size: 1.8rem;
+  }
+}
+
+/* animaciones existentes */
+.slide-right {
+  animation: slideInRight 0.4s;
+}
+.slide-left {
+  animation: slideInLeft 0.4s;
+}
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0.2; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); opacity: 0.2; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+// ...existing code...
