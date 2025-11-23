@@ -3,7 +3,7 @@ import megaProductsVideo from "../assets/video/mega.mp4";
 import "./brands.css";
 import ProductCatalog from "../components/ProductCatalog.jsx";
 import ProductSlider from "../components/ProductSlider.jsx";
-import * as logos from "../assets";
+import * as logos from "../assets/index.js";
 
 import {
   panteraImages,
@@ -15,7 +15,7 @@ import {
   tresBImages,
   liptonImages,
   lumalacImages
-} from "../assets/productsData";
+} from "../assets/productsData.js";
 
 const BRAND_LOGOS = {
   pantera: logos.pantera,

@@ -2,7 +2,7 @@ import { useLocation, Link } from "react-router-dom";
 import OneProduct from "../components/OneProduct";
 import ProductCatalog from "../components/ProductCatalog";
 import { useEffect } from "react";
-import "../views/ProductDetail.css";
+import "./ProductDetail.css";
 import {
   panteraImages,
   veroImages,

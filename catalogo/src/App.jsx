@@ -1,14 +1,14 @@
 import "./App.css";
-import * as images from "./assets";
-import * as usImages from "./assets/us";
-import * as background from "./assets/background";
+import * as images from "./assets/index.js";
+import * as usImages from "./assets/us/index.js";
+import * as background from "./assets/background/index.js";
 import { useState, useRef, useEffect } from "react";
 import megaProductsVideo from "./assets/video/mega.mp4";
 import { Link, Routes, Route } from "react-router-dom";
 import Brands from "./views/brands.jsx";
 import Product from "./views/ProductDetail.jsx";
-import * as logos from "./assets/logos";
-import DotLoader from "react-spinners/DotLoader";
+import * as logos from "./assets/logos/index.js";
+import DotLoader from "react-spinners/DotLoader.js";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 
 function App() {
