@@ -1,0 +1,4 @@
+[build]
+  base = "mega-catalog"
+  command = "npm ci && npm run build"
+  publish = "dist"
