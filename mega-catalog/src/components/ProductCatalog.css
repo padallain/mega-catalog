@@ -1,123 +1,125 @@
-/* ...existing code... */
-.product-catalog {
-  margin-top: 3rem;
+/* ProductCatalog.css — improved: centered container and symmetric lateral spacing */
+
+
+/* Forzar box-sizing global para evitar cálculos de ancho inconsistentes */
+html, body, #root {
+  box-sizing: border-box;
   width: 100%;
-  max-width: 1800px;
-  margin-left: auto;
-  margin-right: auto;
-   padding: 1.25rem;
+}
+*, *::before, *::after { box-sizing: inherit; }
+:root {
+  --catalog-max-width: 1200px;
+  --catalog-padding-desktop: 1.25rem;
+  --catalog-padding-md: 1rem;
+  --catalog-padding-sm: 0.75rem;
+  --catalog-padding-xs: 0.5rem;
+  --catalog-gap: 1rem;
+  --catalog-bg: #ffffff;
+  --catalog-radius: 12px;
+}
+
+.product-catalog {
+  width: 100%;
+  max-width: var(--catalog-max-width);
+  margin: 0 auto; /* centrar */
+  padding-inline: var(--catalog-padding-desktop); /* espacio simétrico */
+  box-sizing: border-box;
 }
 
 .catalog-title {
   text-align: center;
   color: #623386;
-  margin-bottom: 2rem;
-  font-size: 2rem;
+  margin-bottom: 1.6rem;
+  font-size: 1.9rem;
 }
 
-/* Grid responsive: columnas mínimas más pequeñas para permitir 2 elementos en pantallas estrechas */
+/* grid: el contenedor se ocupa todo el ancho disponible dentro del padding del padre */
 .catalog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--catalog-gap);
+  width: 100%;
+  justify-items: stretch; /* que cada celda ocupe su espacio */
+  box-sizing: border-box;
+  padding: 0; /* la separación la maneja el contenedor padre */
 }
 
-/* Card */
 .catalog-item {
-  background: #fff;
-  border-radius: 12px;
+  background: var(--catalog-bg);
+  border-radius: var(--catalog-radius);
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   padding: 0.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 160px;
+  min-height: 140px;
   box-sizing: border-box;
+  width: 100%; /* ocupa 100% de la celda para simetría lateral */
+  align-self: stretch;
 }
 
-/* Imagen del producto: reducir tamaño en móviles */
 .catalog-img {
   width: 120px;
   height: 120px;
   object-fit: contain;
-  margin-bottom: 0.75rem;
-  transition: transform 0.2s ease;
+  margin-bottom: 0.6rem;
+  transition: transform 0.18s ease;
 }
-.catalog-item:hover .catalog-img {
-  transform: scale(1.03);
-}
+.catalog-item:hover .catalog-img { transform: scale(1.03); }
 
 .catalog-item-title {
-  font-size: 1.05rem;
-  font-weight: bold;
+  font-size: 1.03rem;
+  font-weight: 700;
   color: #333;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
   text-align: center;
 }
-
 .catalog-item-desc {
   font-size: 0.95rem;
   color: #666;
   text-align: center;
 }
 
-/* Medium screens: más espacio y tamaño de imagen ajustado */
+/* medium screens */
 @media (max-width: 1000px) {
-  .catalog-title {
-  text-align: center;
-  color: #623386;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
+  .product-catalog { padding-inline: var(--catalog-padding-md); }
+  .catalog-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.9rem; }
+  .catalog-img { width: 100px; height: 100px; }
+  .catalog-item { padding: 0.6rem; min-height: 130px; }
+  .catalog-title { font-size: 1.6rem; }
 }
 
-  .catalog-grid {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 0.9rem;
-  }
-  .catalog-img {
-    width: 100px;
-    height: 100px;
-  }
-  .catalog-item {
-    padding: 0.6rem;
-  }
-}
-
-/* Small screens: forzar 2 columnas siempre que quepan */
+/* small screens */
 @media (max-width: 600px) {
-  .catalog-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
-  }
-  .catalog-item {
-    padding: 0.5rem;
-    min-height: 140px;
-  }
-  .catalog-img {
-    width: 84px;
-    height: 84px;
-    margin-bottom: 0.5rem;
-  }
-  .catalog-item-title {
-    font-size: 0.98rem;
-  }
-  .catalog-item-desc {
-    font-size: 0.9rem;
-  }
+  .product-catalog { padding-inline: var(--catalog-padding-sm); }
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+  .catalog-item { padding: 0.5rem; min-height: 120px; }
+  .catalog-img { width: 84px; height: 84px; margin-bottom: 0.4rem; }
+  .catalog-item-title { font-size: 0.98rem; }
 }
 
-/* Extra small: ajustar aún si la pantalla es muy estrecha (mantener 2 columnas) */
+/* extra small screens */
 @media (max-width: 420px) {
-  .catalog-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.4rem;
-  }
-  .catalog-img {
-    width: 72px;
-    height: 72px;
-  }
-  .catalog-item-title {
-    font-size: 0.95rem;
-  }
+  .product-catalog { padding-inline: calc(var(--catalog-padding-sm) - 0.15rem); }
+  .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.45rem; }
+  .catalog-img { width: 72px; height: 72px; }
 }
-/* ...existing code... */
+
+/* very small */
+@media (max-width: 360px) {
+  .product-catalog { padding-inline: var(--catalog-padding-xs); }
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 0.35rem; }
+  .catalog-item { padding: 0.35rem; min-height: 96px; }
+  .catalog-img { width: 56px; height: 56px; margin-bottom: 0.35rem; }
+  .catalog-item-title { font-size: 0.86rem; }
+  .catalog-item-desc { font-size: 0.78rem; }
+}
+
+@media (max-width: 320px) {
+  .product-catalog { padding-inline: 0.4rem; }
+  .catalog-grid { grid-template-columns: 1fr; gap: 0.4rem; }
+}
+
+/* Utility: if a parent element mistakenly adds extra right margin/padding,
+   you can force symmetric spacing by also applying padding-inline to the parent
+   or by wrapping this component in a centered container. */

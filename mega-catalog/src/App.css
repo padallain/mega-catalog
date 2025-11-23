@@ -218,6 +218,7 @@
   display: block;
   cursor: pointer;
   transition: height 0.2s;
+  
 }
 
 @media (max-width: 600px) {
@@ -244,6 +245,77 @@
     min-width: 40px !important;
     object-fit: contain;
   }
+}
+
+
+.dropdown-logos {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-top: 0.5rem;
+  z-index: 10;
+  padding: 8px;
+  box-sizing: border-box;
+  /* dejar que el grid defina el ancho */
+  width: auto;
+  max-width: 95vw;
+}
+
+/* grid contenedor: columnas controladas por --columns */
+.dropdown-logos-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(var(--columns, 4), 1fr);
+  align-items: center;
+  justify-items: center;
+}
+
+/* cada logo ocupa toda la celda */
+.dropdown-logo-link {
+  display: block;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.dropdown-logo-img {
+  width: 100%;
+  max-width: 120px; /* límite visual */
+  height: 48px;     /* altura consistente */
+  object-fit: contain;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: transform 0.12s ease, border 0.12s ease;
+}
+
+.dropdown-logo-img.selected {
+  border: 3px solid #623386;
+}
+
+/* breakpoints: ajusta --columns según ancho */
+@media (max-width: 480px) {
+  .dropdown-logos-grid { --columns: 4; }
+  .dropdown-logo-img { height: 40px; max-width: 80px; }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .dropdown-logos-grid { --columns: 6; }
+  .dropdown-logo-img { height: 48px; max-width: 100px; }
+}
+@media (min-width: 769px) and (max-width: 1200px) {
+  .dropdown-logos-grid { --columns: 6; }
+  .dropdown-logo-img { height: 56px; max-width: 120px; }
+}
+@media (min-width: 1201px) {
+  .dropdown-logos-grid { --columns: 6; }
+  .dropdown-logo-img { height: 64px; max-width: 140px; }
 }
 
 @media (max-width: 600px) {

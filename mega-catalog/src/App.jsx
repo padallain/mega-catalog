@@ -36,6 +36,42 @@ function App() {
 
   const videoRef = useRef(null);
 
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    // intenta reproducir cuando el componente esté listo
+    const tryPlay = async () => {
+      try {
+        // asegurar que esté silenciado y playsinline
+        v.muted = true;
+        v.playsInline = true;
+        await v.play();
+      } catch (err) {
+        // autoplay bloqueado: esperamos interacción del usuario
+      }
+    };
+
+    // si ya cargó el video (loading == false) intenta reproducir
+    if (!loading) {
+      tryPlay();
+    }
+
+    // reintentar en la primera interacción táctil / pointer
+    const onUserInteract = () => {
+      tryPlay();
+      window.removeEventListener("touchstart", onUserInteract);
+      window.removeEventListener("pointerdown", onUserInteract);
+    };
+    window.addEventListener("touchstart", onUserInteract, { passive: true });
+    window.addEventListener("pointerdown", onUserInteract);
+
+    return () => {
+      window.removeEventListener("touchstart", onUserInteract);
+      window.removeEventListener("pointerdown", onUserInteract);
+    };
+  }, [loading, videoRef]);
+
   const carruselItems = [
     {
       img: usImages.mision,
@@ -134,53 +170,29 @@ function App() {
             {showHola && (
               <div
                 className="dropdown-logos"
-                style={{
-                  position: "absolute",
-                  top: "100%",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  background: "#fff",
-                  border: "1px solid #e0e0e0",
-                  borderRadius: "6px",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-                  marginTop: "0.5rem",
-                  zIndex: 10,
-                  whiteSpace: "nowrap",
-                }}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                {Array.from({ length: Math.ceil(logoKeys.length / 6) }).map(
-                  (_, rowIdx) => (
-                    <div className="dropdown-logos-row" key={rowIdx}>
-                      {logoKeys.slice(rowIdx * 6, rowIdx * 6 + 6).map((key) =>
-                        logos[key] ? (
-                          <Link
-                            to="/brands"
-                            key={key}
-                            onClick={() => setSelectedLogo(key)}
-                          >
-                            <img
-                              src={logos[key]}
-                              alt={key}
-                              className="logo-pantera-hover"
-                              style={{
-                                width: "80px",
-                                maxWidth: "120px",
-                                cursor: "pointer",
-                                border:
-                                  selectedLogo === key
-                                    ? "3px solid #623386"
-                                    : "none",
-                                borderRadius: "12px",
-                              }}
-                            />
-                          </Link>
-                        ) : null
-                      )}
-                    </div>
-                  )
-                )}
+                <div className="dropdown-logos-grid">
+                  {logoKeys.map((key) =>
+                    logos[key] ? (
+                      <Link
+                        to="/brands"
+                        key={key}
+                        onClick={() => setSelectedLogo(key)}
+                        className="dropdown-logo-link"
+                      >
+                        <img
+                          src={logos[key]}
+                          alt={key}
+                          className={`dropdown-logo-img ${
+                            selectedLogo === key ? "selected" : ""
+                          }`}
+                        />
+                      </Link>
+                    ) : null
+                  )}
+                </div>
               </div>
             )}
           </div>
@@ -209,16 +221,20 @@ function App() {
                   </div>
                 )}
                 <video
-                   ref={videoRef}
+                  ref={videoRef}
                   src={megaProductsVideo}
                   preload="auto"
                   autoPlay
                   loop
                   muted
-                   playsInline
+                  playsInline
                   className="pantera-img"
                   style={{ display: loading ? "none" : "block" }}
-                  onCanPlayThrough={() => setLoading(false)}
+                  onCanPlayThrough={() => {
+                    setLoading(false);
+                    // reintentar reproducción inmediatamente
+                    videoRef.current?.play().catch(() => {});
+                  }}
                 />
               </div>
               <img src={images.quien} className="quien" alt="Quiénes Somos" />

@@ -1,9 +1,9 @@
-// ...existing code...
-/* layout base: ocupa todo el ancho del contenedor padre */
+
 .brands-slider-container {
+  --container-padding: 1rem; /* ajustar valor aquí si quieres más/menos espacio */
   width: 100%;
   box-sizing: border-box;
-  padding: 0 1rem;
+  padding-inline: var(--container-padding); /* usa la misma distancia izquierda/derecha */
 }
 
 /* fila principal */
@@ -13,6 +13,10 @@
   justify-content: center;
   gap: 1rem;
   width: 100%;
+  position: relative; /* ADICIÓN: permite posicionar las flechas absolutos */
+  overflow: visible;  /* ADICIÓN: evita que las flechas se recorten */
+  box-sizing: border-box;
+  padding-inline: var(--container-padding); /* garantiza misma distancia a ambos lados */
 }
 
 /* contenido del slide: imagen + info */
@@ -111,7 +115,8 @@
 /* Responsive: móviles (apilar verticalmente) */
 @media (max-width: 700px) {
   .brands-slider-row {
-    padding: 0;
+    padding-inline: var(--container-padding);
+    
   }
   .brands-slider-content {
     flex-direction: column;
@@ -133,6 +138,10 @@
   .brands-slider-title {
     font-size: 1.4rem;
   }
+
+   .brands-slider-btn.left { left: 6px; }
+  .brands-slider-btn.right { right: 6px; }
+
   .brands-slider-desc {
     font-size: 0.95rem;
   }
@@ -156,4 +165,3 @@
   from { transform: translateX(-100%); opacity: 0.2; }
   to   { transform: translateX(0);     opacity: 1; }
 }
-// ...existing code...
