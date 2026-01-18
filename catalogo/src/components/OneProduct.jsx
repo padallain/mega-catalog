@@ -6,6 +6,7 @@ import detailBg from "../assets/video/one.mp4";
 export const zoom = 0.5; // puedes ajustar aquí en pruebas
 
 export default function OneProduct({ product }) {
+  console.log("Rendering OneProduct with product:", product);
   // Hooks siempre al inicio
   const containerRef = useRef(null);
   const lensRef = useRef(null);
@@ -85,14 +86,14 @@ export default function OneProduct({ product }) {
   }
 
     // Preferir datos concretos pasados desde ProductDetail (productData), sino usar product
-  const details = {
+ const details = {
     id: product.id || null,
-    marca: product.brand || product.brand || "Pantera",
-    presentacion: product.presentation || product.presentation || product.pack || "500g",
-    origen: product.origin || product.origin || "Venezuela",
-    peso: product.weight || product.weight || null,
-    precio: product.price || product.price || null,
-    additional: product.additional || product.additional || null,
+    marca: product.brand || null,
+    presentacion: product.presentation || product.pack || "500g",
+    origen: product.origin || "Venezuela",
+    peso: product.weight || null,
+    precio: product.price || null,
+    additional: product.additional || null,
   };
 
   return (

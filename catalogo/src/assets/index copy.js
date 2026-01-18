@@ -9,10 +9,7 @@ import tresB from "./tresB.png";
 import delCampo from "./delCampo.png";
 import isola from "./isola.png";
 import quien from "./quieneSomos.png";
-import lumalac from "./lumalac.png"
-import glup from "./glup.png"
-import faparca from "./faparca.png"
-import nieves from "./nieves.png"
+import lumalac
 
 export {
   cometin,
@@ -25,10 +22,5 @@ export {
   tresB,
   delCampo,
   isola,
-  quien,
-  lumalac,
-  glup,
-  faparca ,
-  nieves
-
+  quien
 };

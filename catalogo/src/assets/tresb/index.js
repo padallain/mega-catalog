@@ -21,6 +21,11 @@ import toallaDiurna from './toalla-diurna.png';
 import toallaNocturna from './toalla-nocturna.png';
 import toallaPremiumDiurna from './toallaPremium-diurna.png';
 import toallaPremiumNocturna from './toallaPremium-nocturna.png';
+import papelHigienico180 from './papel-180.png';
+import papelHigienico400 from './papel-400.png';
+import papelHigienico600 from './papel-600.png';
+
+
 
 export {
   panalAzulg10,
@@ -45,5 +50,8 @@ export {
     toallaDiurna,
     toallaNocturna,
     toallaPremiumDiurna,
-    toallaPremiumNocturna
+    toallaPremiumNocturna,
+    papelHigienico180,
+    papelHigienico400,
+    papelHigienico600,
 };

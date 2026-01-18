@@ -3,6 +3,7 @@ import megaProductsVideo from "../assets/video/mega.mp4";
 import "./brands.css";
 import ProductCatalog from "../components/ProductCatalog.jsx";
 import ProductSlider from "../components/ProductSlider.jsx";
+import * as backgrounds from "../assets/background/index.js";
 import * as logos from "../assets/index.js";
 
 import {
@@ -14,7 +15,9 @@ import {
   esmeraldaImages,
   tresBImages,
   liptonImages,
-  lumalacImages
+  lumalacImages,
+  faparcaImages,
+  nievesImages
 } from "../assets/productsData.js";
 
 const BRAND_LOGOS = {
@@ -27,7 +30,9 @@ const BRAND_LOGOS = {
   tresB: logos.tresB,
   lipton: logos.lipton,
   lumalac: logos.lumalac,
-  delcampo: logos.delcampo
+  delcampo: logos.delCampo,
+  faparca: logos.faparca,
+  nieves: logos.nieves
 };
 
 function getProductsByLogo(selectedLogo) {
@@ -39,6 +44,8 @@ function getProductsByLogo(selectedLogo) {
   if (selectedLogo === "tresB") return tresBImages;
   if (selectedLogo === "lipton") return liptonImages;
   if (selectedLogo === "lumalac") return lumalacImages;
+  if (selectedLogo === "faparca") return faparcaImages;
+  if (selectedLogo === "nieves") return nievesImages;
   return panteraImages;
 }
 
@@ -87,7 +94,13 @@ const BRAND_INFO = {
     title: "Lumalac",
     desc:
       "Lácteos y bebidas nutritivas formuladas para aportar energía y nutrientes en diferentes presentaciones. La línea incluye leches, bebidas con cacao y opciones enriquecidas, desarrolladas para consumo diario y uso en recetas. Se prioriza la estabilidad del producto y la conservación de propiedades nutricionales durante su vida útil."
+  },
+  faparca: {
+    title: "Faparca",
+    desc:
+      "Harinas de trigo de alta calidad, ideales para panadería, repostería y diversas preparaciones culinarias. La gama incluye diferentes tipos de harina, cada una formulada para ofrecer textura y sabor óptimos en recetas tradicionales y modernas. Se garantiza la pureza y frescura del producto para un rendimiento constante."
   }
+
 };
 
 export default function Brands({ selectedLogo }) {
@@ -103,10 +116,24 @@ export default function Brands({ selectedLogo }) {
 
   const brand = BRAND_INFO[selectedLogo] || BRAND_INFO["pantera"];
   const logoSrc = BRAND_LOGOS[selectedLogo] || BRAND_LOGOS.pantera;
+  const bgSrc = backgrounds[selectedLogo] || backgrounds.pantera;
 
   return (
     <div className="body">
-      <video src={megaProductsVideo} autoPlay loop muted className="pantera-img" />
+       <img
+        src={bgSrc}
+        alt={`Fondo ${selectedLogo}`}
+        className="pantera-back-img"
+        style={{
+          width: "100vw",
+          maxWidth: "100vw",
+          height: "auto",
+          objectFit: "cover",
+          borderRadius: 0,
+          display: "block",
+          marginBottom: "2rem"
+        }}
+      />
       <div className="brands-container">
         <div className="brands-info">
           {logoSrc && <img src={logoSrc} alt={brand.title} className="brands-logo" />}

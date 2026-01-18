@@ -13,6 +13,7 @@ import {
   tresBImages,
   liptonImages,
   lumalacImages,
+  faparcaImages
 } from "../assets/productsData";
 
 // ...existing code...
@@ -50,6 +51,7 @@ export default function ProductDetail() {
     tresB: tresBImages,
     lipton: liptonImages,
     lumalac: lumalacImages,
+    faparca: faparcaImages,
   };
 
   // Encontrar la marca buscando por src (preferible) o por title

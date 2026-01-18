@@ -8,6 +8,8 @@ import lumalac from "./lumalac-back.png";
 import delcampo from "./delCampo-back.png";
 import esmeralda from "./esmeralda-back.png";
 import vero from "./vero-back.png";
+import faparca from "./faparca-back.png";
+import nieves from "./nieves-back.png";
 
 export {
   pantera,
@@ -19,5 +21,7 @@ export {
   lumalac,
   delcampo,
   esmeralda,
-  vero
+  vero,
+  faparca,
+  nieves
 };

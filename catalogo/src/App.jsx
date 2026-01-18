@@ -24,6 +24,8 @@ function App() {
     "delcampo",
     "esmeralda",
     "vero",
+    "faparca",
+    "nieves",
   ];
   const [selectedLogo, setSelectedLogo] = useState("pantera");
   const [loading, setLoading] = useState(true);
@@ -190,7 +192,7 @@ function App() {
                           }`}
                         />
                       </Link>
-                    ) : null
+                    ) : null,
                   )}
                 </div>
               </div>
@@ -232,7 +234,10 @@ function App() {
                   style={{ display: loading ? "none" : "block" }}
                   onCanPlayThrough={() => {
                     setLoading(false);
-                    // reintentar reproducción inmediatamente
+                    videoRef.current?.play().catch(() => {});
+                  }}
+                  onClick={() => {
+                    // Fallback: intenta reproducir si el usuario toca el video
                     videoRef.current?.play().catch(() => {});
                   }}
                 />
