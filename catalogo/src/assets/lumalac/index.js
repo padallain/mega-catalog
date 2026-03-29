@@ -1,9 +1,9 @@
-import chicha from "./chichalac.png"
-import leche from "./leche.png";
-import lechecao from "./lechecao.png";
-import lifeteaDurazno from "./lifetea-durazno.png";
-import lifeteaLimon from "./lifetea-limon.png";
-import nutrisoy from "./nutrisoy.png";
+const chicha = "/assets-webp/chichalac.webp";
+const leche = "/assets-webp/leche.webp";
+const lechecao = "/assets-webp/lechecao.webp";
+const lifeteaDurazno = "/assets-webp/lifetea-durazno.webp";
+const lifeteaLimon = "/assets-webp/lifetea-limon.webp";
+const nutrisoy = "/assets-webp/nutrisoy.webp";
 
 export {
   chicha,

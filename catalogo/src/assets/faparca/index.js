@@ -1,6 +1,6 @@
-import harinaCeres from "./harina-ceres.png"
-import harinaCeresita from "./harina-ceresita.png"
-import harinaDoma from "./harina-doma.png"
+const harinaCeres = "/assets-webp/harina-ceres.webp";
+const harinaCeresita = "/assets-webp/harina-ceresita.webp";
+const harinaDoma = "/assets-webp/harina-doma.webp";
 
 
 export {

@@ -1,6 +1,8 @@
-import mision from './mision.jpg';
-import valores from './valores.jpg';
-import vision from './vision.jpg';
+import { assetPath } from "../assetPath.js";
+
+const mision = assetPath("mision.webp");
+const valores = assetPath("valores.webp");
+const vision = assetPath("vision.webp");
 
 export{
     mision,

@@ -1,19 +1,23 @@
-import * as pantera from "./pantera";
-import * as vero from "./vero";
-import * as cometin from "./cometin";
-import * as delMonte from "./delMonte";
-import * as grup from "./glup";
-import * as esmeralda from "./esmeralda";
-import * as tresB from "./tresb";
-import * as lipton from "./lipton";
-import * as lumalac from "./lumalac";
-import * as faparca from "./faparca";
-import * as nieves from "./nieves";
+const withOfflineBase = (src) => {
+  if (typeof src !== "string" || !src.startsWith("/assets-webp/")) {
+    return src;
+  }
+
+  return `${import.meta.env.BASE_URL}${src.slice(1)}`;
+};
+
+const normalizeProducts = (products) => {
+  for (const product of products) {
+    product.src = withOfflineBase(product.src);
+  }
+
+  return products;
+};
 
 // ...existing code...
 export const panteraImages = [
   {
-    src: pantera.caraotasRojas,
+    src: "/assets-webp/caraotas-rojas.webp",
     title: "Caraotas Rojas",
     desc: "Caraotas rojas Pantera: selección premium de granos enteros, cuidadosamente clasificados para ofrecer una textura cremosa y un sabor profundo. Ricas en proteínas y fibra, aportan hierro y minerales esenciales; ideales para guisos tradicionales, ensaladas calientes y platos nutritivos. Conservan su calidad tras almacenamiento prolongado y son fáciles de cocinar.",
     brand: "Pantera",
@@ -23,7 +27,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.maiz500,
+    src: "/assets-webp/maiz-500.webp",
     title: "Maíz 500",
     desc: "Maíz para cotufas Pantera (500g): granos de alta calidad, consistencia uniforme y excelente rendimiento al reventar. Perfecto para snacks caseros y eventos; libre de olores extraños y procesado para mantener su frescura. Aporta carbohidratos de rápida absorción y es apto para compartir en familia.",
     brand: "Pantera",
@@ -33,7 +37,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.caraotasNegras,
+    src: "/assets-webp/caraotas_negras.webp",
     title: "Caraotas Negras",
     desc: "Caraotas negras Pantera: grano de sabor intenso y textura firme tras la cocción. Fuente importante de fibra soluble e insoluble, ayudan a la digestión y mantienen la sensación de saciedad. Recomendadas para sopas, ensaladas y acompañamientos tradicionales por su color y aporte nutricional.",
     brand: "Pantera",
@@ -43,7 +47,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.lentejas,
+    src: "/assets-webp/lentejas.webp",
     title: "Lentejas",
     desc: "Lentejas Pantera: lentejas de cocción pareja, ricas en proteínas vegetales, hierro y complejos de B. Ideales para sopas, guisos y recetas familiares; su textura es suave y mantienen el sabor tras largos tiempos de cocción. Producto seleccionado para garantizar un grano consistente y nutritivo.",
     brand: "Pantera",
@@ -53,7 +57,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.lentejasBebe,
+    src: "/assets-webp/lentejas_bebe.webp",
     title: "Lentejas Bebe",
     desc: "Lentejas bebé Pantera: variedad de rápida cocción, de textura delicada y fácil digestión. Pensadas para purés, cremas y alimentación infantil; conservan propiedades nutritivas como hierro y fibra, y ofrecen una cocción más rápida que las variedades tradicionales.",
     brand: "Pantera",
@@ -63,7 +67,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.garbanzo,
+    src: "/assets-webp/garbanzo.webp",
     title: "Garbanzo",
     desc: "Garbanzos Pantera: grano firme y de sabor suave, perfecto para hummus, ensaladas y guisos. Alto contenido en proteínas y fibra; aporta minerales como zinc y magnesio. Seleccionado para mantener integridad en cocciones largas y asegurar una textura cremosa al triturar.",
     brand: "Pantera",
@@ -73,7 +77,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.avena,
+    src: "/assets-webp/avena.webp",
     title: "Avena",
     desc: "Avena en hojuelas Pantera: copos integrales que aportan energía duradera y una buena porción de fibra soluble (beta-glucanos). Ideal para desayunos, batidos y recetas de repostería; contribuye al control del colesterol y mantiene sensación de saciedad.",
     brand: "Pantera",
@@ -83,7 +87,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.quinchoncho,
+    src: "/assets-webp/quinchoncho.webp",
     title: "Quinchoncho",
     desc: "Quinchoncho Pantera: legumbre nutritiva con alta densidad de proteínas y minerales. Tradicional en platos locales, aporta lisina y otros aminoácidos esenciales; excelente como sustituto de la carne en preparaciones vegetarianas y guisos con alto valor proteico.",
     brand: "Pantera",
@@ -93,7 +97,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.arvejasVerdes,
+    src: "/assets-webp/arvejas-verdes.webp",
     title: "Arvejas Verdes Partidas",
     desc: "Arvejas verdes partidas Pantera: perfectas para cremas, sopas y purés nutritivos. Aportan carbohidratos complejos, proteína vegetal y fibra; su textura suave tras la cocción las hace ideales para platos reconfortantes y fáciles de digerir.",
     brand: "Pantera",
@@ -103,7 +107,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.arvejasAmarillas,
+    src: "/assets-webp/arvejas-amarillas.webp",
     title: "Arvejas Amarillas",
     desc: "Arvejas amarillas Pantera: legumbre versátil para sopas y purés, con cocción rápida y sabor delicado. Fuente de fibra y carbohidratos complejos, aportan energía sostenida y son excelentes para recetas tradicionales y modernas.",
     brand: "Pantera",
@@ -113,7 +117,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.semillasGirasol,
+    src: "/assets-webp/sem-girasol.webp",
     title: "Semillas de Girasol",
     desc: "Semillas de girasol Pantera: crujientes y ricas en grasas saludables (ácidos grasos insaturados), vitamina E y fibra. Ideales como topping en ensaladas, panes y snacks; aportan textura y valor nutricional a preparaciones diarias.",
     brand: "Pantera",
@@ -123,7 +127,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.caraotasBlancas,
+    src: "/assets-webp/caraotas-blancas.webp",
     title: "Caraotas Blancas",
     desc: "Caraotas blancas Pantera: grano tierno y versátil, con sabor ligero que acompaña múltiples recetas. Ricas en carbohidratos complejos y fibra, aportan energía equilibrada y son excelentes en guisos, ensaladas y como base para platos tradicionales.",
     brand: "Pantera",
@@ -133,7 +137,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.frijolPicoNegro,
+    src: "/assets-webp/pico-negro.webp",
     title: "Frijol Pico Negro",
     desc: "Frijol Pico Negro Pantera: variedad pequeña, de sabor concentrado y cocción uniforme. Alto aporte proteico y de fibra, perfecto para guisos tradicionales y preparaciones con fuerte carácter regional.",
     brand: "Pantera",
@@ -143,7 +147,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.frijolBayo,
+    src: "/assets-webp/frijol-bayo.webp",
     title: "Frijol Bayo",
     desc: "Frijol Bayo Pantera: grano de textura agradable y sabor suave, muy adaptable a diferentes métodos de cocción. Aporta proteínas y minerales, y es ideal para recetas familiares y platillos cotidianos.",
     brand: "Pantera",
@@ -153,7 +157,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.caraotasRosada,
+    src: "/assets-webp/caraota-rosada.webp",
     title: "Caraota Rosada",
     desc: "Caraota rosada Pantera: variedad delicada con sabor sutil, perfecta para sopas y guisos ligeros. Ofrece buena digestibilidad y aporte de fibra, resultando en platos equilibrados y nutritivos.",
     brand: "Pantera",
@@ -163,7 +167,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.alpiste,
+    src: "/assets-webp/alpiste.webp",
     title: "Alpiste",
     desc: "Alpiste Pantera: semilla energética, adecuada para mezclas de frutos secos, panes y snacks saludables. Fuente de grasas saludables y micronutrientes; aporta textura y sabor a preparaciones fitness y de consumo diario.",
     brand: "Pantera",
@@ -173,7 +177,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.quinoaEstuche,
+    src: "/assets-webp/quinoa.webp",
     title: "Quinoa Estuche",
     desc: "Quinoa Pantera: pseudocereal multiuso, rica en proteínas completas, fibra y minerales como magnesio y hierro. Apta para ensaladas, guarniciones y platos principales; aporta textura ligera y un perfil nutricional superior.",
     brand: "Pantera",
@@ -183,7 +187,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.chiaEstuche,
+    src: "/assets-webp/chia.webp",
     title: "Chía",
     desc: "Chía Pantera: semillas pequeñas y poderosas en omega-3, fibra y antioxidantes. Ideales para puddings, batidos y como espesante natural; ayudan a la saciedad y son un complemento nutricional versátil.",
     brand: "Pantera",
@@ -193,7 +197,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.cebadaEstuche,
+    src: "/assets-webp/cebada-estuche.webp",
     title: "Cebada Estuche",
     desc: "Cebada Pantera en estuche: cereal nutritivo y fuente de fibra soluble, adecuado para sopas, guisos y bebidas tradicionales. Contribuye a la salud digestiva y aporta textura agradable en diversas preparaciones.",
     brand: "Pantera",
@@ -203,7 +207,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.harinaMaiz,
+    src: "/assets-webp/harina-maiz.webp",
     title: "Harina de Maíz",
     desc: "Harina de Maíz Pantera: molienda fina pensada para arepas, empanadas y recetas tradicionales. Conserva sabor natural del maíz y ofrece una textura homogénea para masas y preparaciones de panadería casera.",
     brand: "Pantera",
@@ -213,7 +217,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.cebada,
+    src: "/assets-webp/cebada.webp",
     title: "Cebada",
     desc: "Cebada Pantera: cereal integral, versátil en cocina y bebidas; aporta carbohidratos complejos, fibra y minerales. Recomendada para sopas, guisos y preparaciones energéticas.",
     brand: "Pantera",
@@ -223,7 +227,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.lentejaRoja,
+    src: "/assets-webp/lenteja-roja.webp",
     title: "Lenteja Roja Partida",
     desc: "Lenteja roja partida Pantera: cocción rápida, textura suave y sabor dulce-terroso. Ideal para cremas, purés y platos reconfortantes; ofrece aporte proteico y digestibilidad elevada.",
     brand: "Pantera",
@@ -233,7 +237,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.lentejaFrancesa,
+    src: "/assets-webp/lenteja-francesa.webp",
     title: "Lenteja Francesa",
     desc: "Lenteja francesa Pantera: grano pequeño y firme que conserva su forma tras la cocción; perfecta para ensaladas y guisos. Rica en proteínas y fibra, aporta valor nutricional sin perder textura.",
     brand: "Pantera",
@@ -243,7 +247,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.lentejaIberica,
+    src: "/assets-webp/lenteja-iberica.webp",
     title: "Lenteja Ibérica",
     desc: "Lenteja ibérica Pantera: variedad tradicional con sabor profundo y textura carnosa; ideal para potajes y platos calientes de larga cocción. Aporta proteínas, fibra y un perfil nutricional balanceado.",
     brand: "Pantera",
@@ -253,7 +257,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.frijolVerde,
+    src: "/assets-webp/frijol-verde.webp",
     title: "Frijol Verde",
     desc: "Frijol verde Pantera: grano tierno y versátil, apto para conservas, guisos y ensaladas. Aporta nutrientes esenciales y es fácil de preparar en recetas cotidianas.",
     brand: "Pantera",
@@ -263,7 +267,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.lentejaBeluga,
+    src: "/assets-webp/lenteja-beluga.webp",
     title: "Lenteja Beluga",
     desc: "Lenteja Beluga Pantera: grano pequeño, oscuro y con textura firme, ideal para platos gourmet y ensaladas sofisticadas. Ricas en proteínas y con una presentación elegante en la cocina.",
     brand: "Pantera",
@@ -273,7 +277,7 @@ export const panteraImages = [
     price: null,
   },
   {
-    src: pantera.frijolBlanco,
+    src: "/assets-webp/frijol-blanco.webp",
     title: "Frijol Blanco",
     desc: "Frijol blanco Pantera: grano suave y versátil, ideal para guisos, ensaladas y platos tradicionales. Rico en proteínas y fibra, aporta energía y nutrientes esenciales.",
     brand: "Pantera",
@@ -286,7 +290,7 @@ export const panteraImages = [
 
 export const tresBImages = [
   {
-    src: tresB.panalAzulg10,
+    src: "/assets-webp/panalAzul-g10.webp",
     title: "Pañales Bebe Maleta Premium G10",
     size: "G",
     presentation: "10 unidades x 20 paquetes",
@@ -294,7 +298,7 @@ export const tresBImages = [
     desc: "Pañal azul talla G, paquete de 10 unidades.",
   },
   {
-    src: tresB.panalAzulg30,
+    src: "/assets-webp/panalAzul-g30.webp",
     title: "Pañales Bebe Maleta Premium G30",
     size: "G",
     presentation: "30 unidades x 8 paquetes",
@@ -302,7 +306,7 @@ export const tresBImages = [
     desc: "Pañal azul talla G, paquete de 30 unidades.",
   },
   {
-    src: tresB.panalAzulm11,
+    src: "/assets-webp/panalAzul-m11.webp",
     title: "Pañales Bebe  Premium Pequeño M11",
     size: "M",
     presentation: "11 unidades x 20 paquetes",
@@ -310,7 +314,7 @@ export const tresBImages = [
     desc: "Pañal azul talla M, paquete de 11 unidades.",
   },
   {
-    src: tresB.panalAzulm33,
+    src: "/assets-webp/panalAzul-m33.webp",
     title: "Pañales Bebe Maleta Premium M33",
     size: "M",
     presentation: "33 unidades x 8 paquetes",
@@ -318,7 +322,7 @@ export const tresBImages = [
     desc: "Pañal azul talla M, paquete de 33 unidades.",
   },
   {
-    src: tresB.panalAzulp12,
+    src: "/assets-webp/panalAzul-p12.webp",
     title: "Pañales Bebe Premium Pequeño P12",
     size: "P",
     presentation: "12 unidades x 20 paquetes",
@@ -326,7 +330,7 @@ export const tresBImages = [
     desc: "Pañal azul talla P, paquete de 12 unidades.",
   },
   {
-    src: tresB.panalAzulp36,
+    src: "/assets-webp/panalAzul-p36.webp",
     title: "Pañales Bebe Maleta Premium P36",
     size: "P",
     presentation: "36 unidades x 8 paquetes",
@@ -334,7 +338,7 @@ export const tresBImages = [
     desc: "Pañal azul talla P, paquete de 36 unidades.",
   },
   {
-    src: tresB.panalAzulxg9,
+    src: "/assets-webp/panalAzul-xg9.webp",
     title: "Pañales Bebe Maleta Premium XG9",
     size: "XG",
     presentation: "9 unidades x 20 paquetes",
@@ -342,7 +346,7 @@ export const tresBImages = [
     desc: "Pañal azul talla XG, paquete de 9 unidades.",
   },
   {
-    src: tresB.panalAzulxg27,
+    src: "/assets-webp/panalAzul-xg27.webp",
     title: "Pañales Bebe Maleta Premium XG27",
     size: "XG",
     presentation: "27 unidades x 8 paquetes",
@@ -350,7 +354,7 @@ export const tresBImages = [
     desc: "Pañal azul talla XG, paquete de 27 unidades.",
   },
   {
-    src: tresB.panalAdultol,
+    src: "/assets-webp/panalesAdulto-l.webp",
     title: "Pañales Adulto Pants L",
     size: "L",
     presentation: "10 unidades x 6 paquetes",
@@ -358,7 +362,7 @@ export const tresBImages = [
     desc: "Pañal adulto talla L.",
   },
   {
-    src: tresB.panalAdultom,
+    src: "/assets-webp/panalesAdulto-m.webp",
     title: "Pañales Adulto Pants M",
     size: "M",
     presentation: "10 unidades x 6 paquetes",
@@ -366,7 +370,7 @@ export const tresBImages = [
     desc: "Pañal adulto talla M.",
   },
   {
-    src: tresB.panalAdultoxl,
+    src: "/assets-webp/panalesAdulto-xl.webp",
     title: "Pañales Adulto Pants XL",
     size: "XL",
     presentation: "10 unidades x 6 paquetes",
@@ -374,7 +378,7 @@ export const tresBImages = [
     desc: "Pañal adulto talla XL.",
   },
   {
-    src: tresB.panalesPremiumAdultol,
+    src: "/assets-webp/panalesPremiumAdulto-l.webp",
     title: "Pañales 3B Adulto Premium L",
     size: "L",
     presentation: "8 unidades x 6 paquetes",
@@ -382,7 +386,7 @@ export const tresBImages = [
     desc: "Pañal premium adulto talla L.",
   },
   {
-    src: tresB.panalesPremiumAdultom,
+    src: "/assets-webp/panalesPremiumAdulto-m.webp",
     title: "Pañales 3B Adulto Premium M",
     size: "M",
     presentation: "8 unidades x 6 paquetes",
@@ -390,7 +394,7 @@ export const tresBImages = [
     desc: "Pañal premium adulto talla M.",
   },
   {
-    src: tresB.panalesPremiumAdultoxl,
+    src: "/assets-webp/panalesPremiumAdulto-xl.webp",
     title: "Pañales 3B Adulto Premium XL",
     size: "XL",
     presentation: "8 unidades x 6 paquetes",
@@ -398,7 +402,7 @@ export const tresBImages = [
     desc: "Pañal premium adulto talla XL.",
   },
   {
-    src: tresB.panalesRojog20,
+    src: "/assets-webp/panalRojo-g20.webp",
     title: "Pañales Bebe Clasico Rojo G20",
     size: "G",
     presentation: "20 unidades x 10 paquetes",
@@ -406,7 +410,7 @@ export const tresBImages = [
     desc: "Pañal rojo talla G, paquete de 20 unidades.",
   },
   {
-    src: tresB.panalesRojom20,
+    src: "/assets-webp/panalRojo-m20.webp",
     title: "Pañales Bebe Clasico Rojo M20",
     size: "M",
     presentation: "20 unidades x 10 paquetes",
@@ -414,7 +418,7 @@ export const tresBImages = [
     desc: "Pañal rojo talla M, paquete de 20 unidades.",
   },
   {
-    src: tresB.panalesRojop20,
+    src: "/assets-webp/panalRojo-p20.webp",
     title: "Pañales Bebe Clasico Rojo P20",
     size: "P",
     presentation: "20 unidades x 10 paquetes",
@@ -422,7 +426,7 @@ export const tresBImages = [
     desc: "Pañal rojo talla P, paquete de 20 unidades.",
   },
   {
-    src: tresB.panalesRojoxg20,
+    src: "/assets-webp/panalRojo-xg20.webp",
     title: "Pañales Bebe Clasico Rojo XG20",
     size: "XG",
     presentation: "20 unidades x 10 paquetes",
@@ -430,7 +434,7 @@ export const tresBImages = [
     desc: "Pañal rojo talla XG, paquete de 20 unidades.",
   },
   {
-    src: tresB.protectorCama,
+    src: "/assets-webp/protector-cama.webp",
     title: "Protector de Cama Multiusos",
     size: "90x60 cm",
     presentation: "10 unidades x 6 paquetes",
@@ -438,49 +442,49 @@ export const tresBImages = [
     desc: "Protector de cama absorbente.",
   },
   {
-    src: tresB.toallaDiurna,
+    src: "/assets-webp/toalla-diurna.webp",
     title: "Toallas Sanitarias Diurna Tela",
     presentation: "10 unidades x 24 paquetes",
     id: "001721",
     desc: "Toalla sanitaria diurna.",
   },
   {
-    src: tresB.toallaNocturna,
+    src: "/assets-webp/toalla-nocturna.webp",
     title: "Toallas Sanitarias Nocturna Tela",
     presentation: "10 unidades x 24 paquetes",
     id: "001722",
     desc: "Toalla sanitaria nocturna.",
   },
   {
-    src: tresB.toallaPremiumDiurna,
+    src: "/assets-webp/toallaPremium-diurna.webp",
     title: "Toallas Sanitarias Premium Diurna Tela",
     presentation: "10 unidades x 24 paquetes",
     id: "001723",
     desc: "Toalla premium diurna.",
   },
   {
-    src: tresB.toallaPremiumNocturna,
+    src: "/assets-webp/toallaPremium-nocturna.webp",
     title: "Toallas Sanitarias Premium Nocturna Tela",
     presentation: "10 unidades x 24 paquetes",
     id: "001724",
     desc: "Toalla premium nocturna.",
   },
   {
-    src: tresB.papelHigienico180,
+    src: "/assets-webp/papel-180.webp",
     title: "Papel Higiénico 180 hojas",
     desc: "Papel higiénico Tres B de 180 hojas, suave y resistente. Ideal para uso diario en el hogar y comercios.",
     presentation: "180 hojas x 48 rollos",
     id: "001725",
   },
   {
-    src: tresB.papelHigienico400,
+    src: "/assets-webp/papel-400.webp",
     title: "Papel Higiénico 400 hojas",
     desc: "Papel higiénico Tres B de 400 hojas, mayor rendimiento y suavidad. Perfecto para familias y oficinas.",
     presentation: "400 hojas x 24 rollos",
     id: "001726",
   },
   {
-    src: tresB.papelHigienico600,
+    src: "/assets-webp/papel-600.webp",
     title: "Papel Higiénico 600 hojas",
     desc: "Papel higiénico Tres B de 600 hojas, extra duración y confort. Recomendado para alto consumo.",
     presentation: "600 hojas x 12 rollos",
@@ -490,7 +494,7 @@ export const tresBImages = [
 
 export const nievesImages = [
   {
-    src: nieves.lavaplatosNaranja,
+    src: "/assets-webp/lavaplatos-naranja.webp",
     title: "Lavaplatos Naranja",
     desc: "Lavaplatos Nieves aroma naranja: limpia eficazmente y deja un fresco aroma cítrico en tu vajilla.",
     brand: "Nieves",
@@ -498,7 +502,7 @@ export const nievesImages = [
     id: null,
   },
   {
-    src: nieves.lavaplatosLimón,
+    src: "/assets-webp/lavaplatos-limon.webp",
     title: "Lavaplatos Limón",
     desc: "Lavaplatos Nieves aroma limón: remueve grasa y suciedad, dejando tus utensilios relucientes y con aroma a limón.",
     brand: "Nieves",
@@ -506,7 +510,7 @@ export const nievesImages = [
     id: null,
   },
   {
-    src: nieves.lavaplatosManzana,
+    src: "/assets-webp/lavaplatos-manzana.webp",
     title: "Lavaplatos Manzana",
     desc: "Lavaplatos Nieves aroma manzana: limpieza profunda y fragancia fresca para tu cocina.",
     brand: "Nieves",
@@ -514,7 +518,7 @@ export const nievesImages = [
     id: null,
   },
   {
-    src: nieves.detergenteFloral,
+    src: "/assets-webp/detergente-floral.webp",
     title: "Detergente Floral",
     desc: "Detergente Nieves con fragancia floral: ideal para ropa limpia, suave y con agradable aroma.",
     brand: "Nieves",
@@ -522,7 +526,7 @@ export const nievesImages = [
     id: null,
   },
   {
-    src: nieves.detergenteLimon,
+    src: "/assets-webp/detergente-limon.webp",
     title: "Detergente Limón",
     desc: "Detergente Nieves aroma limón: elimina manchas difíciles y deja la ropa con frescura cítrica.",
     brand: "Nieves",
@@ -530,7 +534,7 @@ export const nievesImages = [
     id: null,
   },
   {
-    src: nieves.detergenteLavanda,
+    src: "/assets-webp/detergente-lavanda.webp",
     title: "Detergente Lavanda",
     desc: "Detergente Nieves con aroma lavanda: limpieza eficiente y fragancia relajante para tus prendas.",
     brand: "Nieves",
@@ -541,32 +545,32 @@ export const nievesImages = [
 
 export const lumalacImages = [
   {
-    src: lumalac.chicha,
+    src: "/assets-webp/chichalac.webp",
     title: "Chichalac",
     desc: "Snack Chichalac, delicioso y crujiente.",
   },
   {
-    src: lumalac.leche,
+    src: "/assets-webp/leche.webp",
     title: "Leche Lumalac",
     desc: "Leche en polvo Lumalac, fuente de calcio y energía.",
   },
   {
-    src: lumalac.lechecao,
+    src: "/assets-webp/lechecao.webp",
     title: "Lechecao",
     desc: "Leche con cacao Lumalac, ideal para desayunos y meriendas.",
   },
   {
-    src: lumalac.lifeteaDurazno,
+    src: "/assets-webp/lifetea-durazno.webp",
     title: "Life Tea Durazno",
     desc: "Bebida Life Tea sabor durazno, refrescante y natural.",
   },
   {
-    src: lumalac.lifeteaLimon,
+    src: "/assets-webp/lifetea-limon.webp",
     title: "Life Tea Limón",
     desc: "Bebida Life Tea sabor limón, perfecta para cualquier momento.",
   },
   {
-    src: lumalac.nutrisoy,
+    src: "/assets-webp/nutrisoy.webp",
     title: "Nutrisoy",
     desc: "Bebida Nutrisoy, nutritiva y saludable.",
   },
@@ -574,62 +578,62 @@ export const lumalacImages = [
 
 export const liptonImages = [
   {
-    src: lipton.teChai,
+    src: "/assets-webp/te-chai.webp",
     title: "Té Chai",
     desc: "Té Lipton Chai, mezcla especiada y aromática.",
   },
   {
-    src: lipton.teCondeGris,
+    src: "/assets-webp/te-condeGris.webp",
     title: "Té Conde Gris",
     desc: "Té Lipton Conde Gris, sabor clásico y elegante.",
   },
   {
-    src: lipton.teJengibrePina,
+    src: "/assets-webp/te-jengibrePina.webp",
     title: "Té Jengibre Piña",
     desc: "Té Lipton con jengibre y piña, refrescante y exótico.",
   },
   {
-    src: lipton.teJengibreRosa,
+    src: "/assets-webp/te-jengibreRosa.webp",
     title: "Té Jengibre Rosa",
     desc: "Té Lipton con jengibre y rosa, suave y floral.",
   },
   {
-    src: lipton.teManzanilla,
+    src: "/assets-webp/te-manzanilla.webp",
     title: "Té Manzanilla",
     desc: "Té Lipton de manzanilla, relajante y natural.",
   },
   {
-    src: lipton.teManzanillaMiel,
+    src: "/assets-webp/te-manzanillaMiel.webp",
     title: "Té Manzanilla Miel",
     desc: "Té Lipton de manzanilla con miel, dulce y reconfortante.",
   },
   {
-    src: lipton.teNaranja,
+    src: "/assets-webp/te-naranja.webp",
     title: "Té Naranja",
     desc: "Té Lipton sabor naranja, cítrico y refrescante.",
   },
   {
-    src: lipton.teNegro,
+    src: "/assets-webp/te-negro.webp",
     title: "Té Negro",
     desc: "Té Lipton negro, intenso y tradicional.",
   },
   {
-    src: lipton.tePomelo,
+    src: "/assets-webp/te-pomelo.webp",
     title: "Té Pomelo",
     desc: "Té Lipton sabor pomelo, fresco y afrutado.",
   },
   {
-    src: lipton.teVerde,
+    src: "/assets-webp/te-verde.webp",
     title: "Té Verde",
     desc: "Té Lipton verde, antioxidante y saludable.",
   },
   {
-    src: lipton.teVerdeCitricos,
+    src: "/assets-webp/te-verdeCitrico.webp",
     title: "Té Verde Cítricos",
     desc: "Té Lipton verde con cítricos, refrescante y ligero.",
   },
   {
-    src: lipton.teVerdeFrutosRojos,
+    src: "/assets-webp/te-verdeFrutosRojos.webp",
     title: "Té Verde Frutos Rojos",
     desc: "Té Lipton verde con frutos rojos, dulce y afrutado.",
   },
@@ -637,67 +641,67 @@ export const liptonImages = [
 
 export const delMonteImages = [
   {
-    src: delMonte.coctelFrutas,
+    src: "/assets-webp/coctel-frutas.webp",
     title: "Cóctel de Frutas",
     desc: "Cóctel de frutas en almíbar, ideal para postres y meriendas.",
   },
   {
-    src: delMonte.durazno,
+    src: "/assets-webp/durazno.webp",
     title: "Durazno",
     desc: "Duraznos en almíbar, perfectos para disfrutar solos o en recetas.",
   },
   {
-    src: delMonte.ensaladaFrutas,
+    src: "/assets-webp/ensalada-frutas.webp",
     title: "Ensalada de Frutas",
     desc: "Ensalada de frutas variadas en almíbar.",
   },
   {
-    src: delMonte.guisantico,
+    src: "/assets-webp/guisante-280.webp",
     title: "Guisantico",
     desc: "Guisantes enlatados, prácticos y nutritivos.",
   },
   {
-    src: delMonte.guisantes,
+    src: "/assets-webp/guisantes.webp",
     title: "Guisantes",
     desc: "Guisantes verdes, fuente de proteína vegetal.",
   },
   {
-    src: delMonte.guisanteZanahoria,
+    src: "/assets-webp/guisante-zanahoria.webp",
     title: "Guisantes con Zanahoria",
     desc: "Mezcla de guisantes y zanahorias, lista para servir.",
   },
   {
-    src: delMonte.jugoDurazno,
+    src: "/assets-webp/jugo-durazno.webp",
     title: "Jugo de Durazno",
     desc: "Jugo natural de durazno, refrescante y delicioso.",
   },
   {
-    src: delMonte.jugoMango,
+    src: "/assets-webp/jugo-mango.webp",
     title: "Jugo de Mango",
     desc: "Jugo de mango, ideal para acompañar tus comidas.",
   },
   {
-    src: delMonte.jugoManzana,
+    src: "/assets-webp/jugo-manzana.webp",
     title: "Jugo de Manzana",
     desc: "Jugo de manzana, sabor suave y natural.",
   },
   {
-    src: delMonte.jugoPera,
+    src: "/assets-webp/jugo-pera.webp",
     title: "Jugo de Pera",
     desc: "Jugo de pera, perfecto para cualquier ocasión.",
   },
   {
-    src: delMonte.ketchup,
+    src: "/assets-webp/ketchup.webp",
     title: "Ketchup",
     desc: "Ketchup Del Monte, el complemento ideal para tus comidas.",
   },
   {
-    src: delMonte.maizEntero,
+    src: "/assets-webp/maiz-entero.webp",
     title: "Maíz Entero",
     desc: "Granos de maíz enteros, dulces y tiernos.",
   },
   {
-    src: delMonte.maizTaf,
+    src: "/assets-webp/maiz-taf.webp",
     title: "Maíz TAF",
     desc: "Maíz TAF, práctico y delicioso para tus recetas.",
   },
@@ -705,37 +709,37 @@ export const delMonteImages = [
 
 export const glupImages = [
   {
-    src: grup.cola,
+    src: "/assets-webp/cola.webp",
     title: "Glup Cola",
     desc: "Refresco sabor cola, refrescante y delicioso.",
   },
   {
-    src: grup.kolita,
+    src: "/assets-webp/kolita.webp",
     title: "Glup Kolita",
     desc: "Refresco sabor kolita, ideal para cualquier ocasión.",
   },
   {
-    src: grup.fresh,
+    src: "/assets-webp/fresh.webp",
     title: "Glup Fresh",
     desc: "Refresco Glup Fresh, sabor único y refrescante.",
   },
   {
-    src: grup.justy,
+    src: "/assets-webp/justy.webp",
     title: "Glup Justy",
     desc: "Refresco Glup Justy, perfecto para compartir.",
   },
   {
-    src: grup.uva,
+    src: "/assets-webp/uva.webp",
     title: "Glup Uva",
     desc: "Refresco sabor uva, dulce y refrescante.",
   },
 ];
 
 export const veroImages = [
-  { src: vero.rojo100, title: "Vero Rojo", desc: "Descripción de Vero Rojo" },
-  { src: vero.azul100, title: "Vero Azul", desc: "Descripción de Vero Azul" },
+  { src: "/assets-webp/vero-rojo.webp", title: "Vero Rojo", desc: "Descripción de Vero Rojo" },
+  { src: "/assets-webp/vero-azul.webp", title: "Vero Azul", desc: "Descripción de Vero Azul" },
   {
-    src: vero.azulito50,
+    src: "/assets-webp/vero-azulito.webp",
     title: "Vero Verde",
     desc: "Descripción de Vero Verde",
   },
@@ -743,7 +747,7 @@ export const veroImages = [
 
 export const cometinImages = [
   {
-    src: cometin.arosCebolla,
+    src: "/assets-webp/aros-cebolla.webp",
     title: "Aros de Papa sabor a Cebolla",
     desc: "Aros de cebolla Cometín: bocadillo crujiente elaborado principalmente con papa, realzado con auténtico sabor a cebolla. Perfectos para compartir en reuniones, picnics o como acompañante en tus comidas favoritas. Su textura ligera y sabor intenso los hacen irresistibles para grandes y chicos. Ideales para quienes buscan un snack diferente y sabroso.",
     brand: "Cometín",
@@ -751,7 +755,7 @@ export const cometinImages = [
     id: "001757",
   },
   {
-    src: cometin.arosMaiz,
+    src: "/assets-webp/aros-maiz.webp",
     title: "Aros de Maíz",
     desc: "Aros de maíz Cometín: bocadillo tradicional venezolano, elaborado con maíz seleccionado y especias naturales. Crujientes y sabrosos, ideales para meriendas, fiestas infantiles o como snack en cualquier momento del día. Su sabor clásico y textura aireada los convierten en el favorito de la familia.",
     brand: "Cometín",
@@ -759,7 +763,7 @@ export const cometinImages = [
     id: "001760",
   },
   {
-    src: cometin.arosPicante,
+    src: "/assets-webp/aros-picante.webp",
     title: "Aros de Papa sabor a Picantes",
     desc: "Aros picantes Cometín: snack con un toque de picante, pensado para quienes disfrutan de sabores intensos y atrevidos. Elaborados con ingredientes de calidad y especias seleccionadas, son perfectos para acompañar bebidas y compartir con amigos. Su sabor audaz y textura crocante despiertan el paladar.",
     brand: "Cometín",
@@ -767,7 +771,7 @@ export const cometinImages = [
     id: "001759",
   },
   {
-    src: cometin.arosTocineta,
+    src: "/assets-webp/aros-tocineta.webp",
     title: "Aros de papa con Tocineta",
     desc: "Aros sabor tocineta Cometín: bocadillo crujiente con auténtico sabor a tocineta, ideal para quienes buscan un snack diferente y delicioso. Perfectos para picar entre comidas, acompañar salsas o disfrutar en reuniones. Su aroma y sabor ahumado los hacen únicos.",
     brand: "Cometín",
@@ -775,7 +779,7 @@ export const cometinImages = [
     id: "001758",
   },
   {
-    src: cometin.bolitaQueso,
+    src: "/assets-webp/bolita-queso.webp",
     title: "Bolitas de Maíz con Queso",
     desc: "Bolitas de queso Cometín: pequeñas esferas crujientes con intenso sabor a queso, elaboradas con mezcla de harinas y queso real. Ideales para meriendas escolares, fiestas y como snack rápido. Su textura ligera y sabor cremoso conquistan a todos.",
     brand: "Cometín",
@@ -783,7 +787,7 @@ export const cometinImages = [
     id: "001772",
   },
   {
-    src: cometin.chicharron,
+    src: "/assets-webp/chicharron.webp",
     title: "Chicharron Picante",
     desc: "Chicharrón Cometín: snack tipo chicharrón, elaborado con harinas seleccionadas y especias, que imita el sabor y textura del chicharrón tradicional. Perfecto para compartir en reuniones, acompañar bebidas o disfrutar solo. Crujiente y sabroso en cada bocado.",
     brand: "Cometín",
@@ -791,7 +795,7 @@ export const cometinImages = [
     id: "001770",
   },
   {
-    src: cometin.chulitos,
+    src: "/assets-webp/chulitos.webp",
     title: "Chulitos",
     desc: "Chulitos Cometín: bocadillo tradicional venezolano, crujiente y dorado, elaborado con harina de maíz y especias. Perfectos para picar entre comidas, acompañar salsas o compartir en fiestas. Su sabor clásico y textura crocante los hacen irresistibles.",
     brand: "Cometín",
@@ -799,7 +803,7 @@ export const cometinImages = [
     id: "001764",
   },
   {
-    src: cometin.cotufasCarameladas,
+    src: "/assets-webp/cotufa-caramelo.webp",
     title: "Cotufas Carameladas",
     desc: "Cotufas carameladas Cometín: palomitas de maíz cubiertas con caramelo dorado, que ofrecen una combinación perfecta de dulzura y crocancia. Ideales para meriendas, celebraciones y como postre ligero. Su sabor dulce y textura crujiente conquistan a todos.",
     brand: "Cometín",
@@ -807,7 +811,7 @@ export const cometinImages = [
     id: "001762",
   },
   {
-    src: cometin.maniFamiliar,
+    src: "/assets-webp/mani-familiar.webp",
     title: "Maní Familiar",
     desc: "Maní Cometín en presentación familiar: maní tostado y salado, seleccionado por su tamaño y frescura. Ideal para compartir en reuniones, fiestas o como snack saludable. Rico en proteínas y grasas saludables, aporta energía y sabor en cada porción.",
     brand: "Cometín",
@@ -815,7 +819,7 @@ export const cometinImages = [
     id: "001752",
   },
   {
-    src: cometin.maniJapones,
+    src: "/assets-webp/mani-japones.webp",
     title: "Maní Japonés",
     desc: "Maní japonés Cometín: maní cubierto con una capa crujiente y ligeramente dulce, inspirado en la receta tradicional japonesa. Perfecto para picar entre comidas, acompañar bebidas o compartir en reuniones. Su textura y sabor únicos lo hacen especial.",
     brand: "Cometín",
@@ -823,7 +827,7 @@ export const cometinImages = [
     id: "001756",
   },
   {
-    src: cometin.maniMerey,
+    src: "/assets-webp/mani-merey.webp",
     title: "Maní con Merey",
     desc: "Maní con merey Cometín: mezcla selecta de maní tostado y trozos de merey, que combina lo mejor de ambos frutos secos. Ideal para meriendas saludables, aportar energía y disfrutar de un sabor sofisticado. Rico en proteínas y grasas saludables.",
     brand: "Cometín",
@@ -831,7 +835,7 @@ export const cometinImages = [
     id: "001753",
   },
   {
-    src: cometin.maniPasas,
+    src: "/assets-webp/mani-pasas.webp",
     title: "Maní con Pasas",
     desc: "Maní con pasas Cometín: combinación de maní tostado y pasas seleccionadas, que ofrece un balance perfecto entre dulzura y crocancia. Ideal para picar, acompañar desayunos o como snack energético. Fuente de fibra, proteínas y antioxidantes.",
     brand: "Cometín",
@@ -839,7 +843,7 @@ export const cometinImages = [
     id: "001754",
   },
   {
-    src: cometin.merey,
+    src: "/assets-webp/merey.webp",
     title: "Merey",
     desc: "Merey Cometín: merey natural, seleccionado por su frescura y sabor. Perfecto para consumir solo, añadir a ensaladas o como ingrediente en recetas saludables. Rico en grasas saludables, minerales y antioxidantes, aporta energía y sabor.",
     brand: "Cometín",
@@ -847,7 +851,7 @@ export const cometinImages = [
     id: "001755",
   },
   {
-    src: cometin.palitoCebolla,
+    src: "/assets-webp/palito-cebolla.webp",
     title: "Palitos de Papa con Cebolla y Perejil",
     desc: "Palitos de cebolla Cometín: bocadillo crujiente en forma de palitos, con auténtico sabor a cebolla. Ideales para picar entre comidas, acompañar dips o compartir en reuniones. Su textura ligera y sabor intenso los hacen irresistibles.",
     brand: "Cometín",
@@ -855,7 +859,7 @@ export const cometinImages = [
     id: "001766",
   },
   {
-    src: cometin.palitoQueso,
+    src: "/assets-webp/palito-queso.webp",
     title: "Palitos de Maíz con Queso",
     desc: "Palitos de queso Cometín: snack crujiente en forma de palitos, elaborado con mezcla de harinas y queso real. Perfectos para meriendas, fiestas y como acompañante en tus comidas favoritas. Su sabor a queso y textura crocante conquistan a todos.",
     brand: "Cometín",
@@ -863,7 +867,7 @@ export const cometinImages = [
     id: "001771",
   },
   {
-    src: cometin.palitoPapa,
+    src: "/assets-webp/palito-papa.webp",
     title: "Palitos de Papa",
     desc: "Palitos de papa Cometín: bocadillo clásico en forma de palitos, elaborado con papa seleccionada y especias naturales. Crujientes y sabrosos, ideales para picar, acompañar salsas o compartir en reuniones. Su sabor tradicional y textura ligera los hacen favoritos.",
     brand: "Cometín",
@@ -874,37 +878,37 @@ export const cometinImages = [
 
 export const esmeraldaImages = [
   {
-    src: esmeralda.sal500,
+    src: "/assets-webp/sal-500.webp",
     title: "Sal Esmeralda 500g",
     desc: "Sal refinada Esmeralda en presentación de 500 gramos.",
   },
   {
-    src: esmeralda.sal1000,
+    src: "/assets-webp/sal-1000.webp",
     title: "Sal Esmeralda 1000g",
     desc: "Sal refinada Esmeralda en presentación de 1 kilogramo.",
   },
   {
-    src: esmeralda.salAhumada,
+    src: "/assets-webp/sal-ahumada.webp",
     title: "Sal Ahumada",
     desc: "Sal Esmeralda con sabor ahumado, ideal para parrillas.",
   },
   {
-    src: esmeralda.salAjo,
+    src: "/assets-webp/sal-ajo.webp",
     title: "Sal con Ajo",
     desc: "Sal Esmeralda con ajo, perfecta para sazonar tus comidas.",
   },
   {
-    src: esmeralda.salFinasHierbas,
+    src: "/assets-webp/sal-finasHierbas.webp",
     title: "Sal Finas Hierbas",
     desc: "Sal Esmeralda con finas hierbas para realzar el sabor.",
   },
   {
-    src: esmeralda.salParrilla,
+    src: "/assets-webp/sal-parrilla.webp",
     title: "Sal Parrilla",
     desc: "Sal Esmeralda especial para parrillas y asados.",
   },
   {
-    src: esmeralda.salRosada,
+    src: "/assets-webp/sal-rosada.webp",
     title: "Sal Rosada",
     desc: "Sal rosada Esmeralda, fuente natural de minerales.",
   },
@@ -912,7 +916,7 @@ export const esmeraldaImages = [
 
 export const faparcaImages = [
   {
-    src: faparca.harinaCeres,
+    src: "/assets-webp/harina-ceres.webp",
     title: "Harina Ceres",
     desc: "Harina Ceres: harina de trigo de alta calidad, ideal para panadería profesional y elaboración de pan de alta calidad. Recomendada para obtener panes con excelente textura y volumen.",
     brand: "Faparca",
@@ -920,7 +924,7 @@ export const faparcaImages = [
     id: null,
   },
   {
-    src: faparca.harinaCeresita,
+    src: "/assets-webp/harina-ceresita.webp",
     title: "Harina Ceresita",
     desc: "Harina Ceresita: harina de trigo refinada, perfecta para todo tipo de preparaciones, especialmente para pan de alta calidad y masas esponjosas.",
     brand: "Faparca",
@@ -928,7 +932,7 @@ export const faparcaImages = [
     id: null,
   },
   {
-    src: faparca.harinaDoma,
+    src: "/assets-webp/harina-doma.webp",
     title: "Harina Doma",
     desc: "Harina Doma: harina de trigo especial para pasapalos, postres y repostería. Ideal para tortas, galletas y productos de pastelería fina.",
     brand: "Faparca",
@@ -936,3 +940,17 @@ export const faparcaImages = [
     id: null,
   },
 ];
+
+[
+  panteraImages,
+  tresBImages,
+  nievesImages,
+  lumalacImages,
+  liptonImages,
+  delMonteImages,
+  glupImages,
+  veroImages,
+  cometinImages,
+  esmeraldaImages,
+  faparcaImages,
+].forEach(normalizeProducts);

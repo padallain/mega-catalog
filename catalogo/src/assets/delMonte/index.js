@@ -1,16 +1,16 @@
-import coctelFrutas from "./coctel-frutas.png";
-import durazno from "./durazno.png";
-import ensaladaFrutas from "./ensalada-frutas.png";
-import guisantico from "./guisante-280.png";
-import guisantes from "./guisantes.png";
-import guisanteZanahoria from "./guisante-zanahoria.png";
-import jugoDurazno from "./jugo-durazno.png";
-import jugoMango from "./jugo-mango.png";
-import jugoManzana from "./jugo-manzana.png";
-import jugoPera from "./jugo-pera.png";
-import ketchup from "./ketchup.png";
-import maizEntero from "./maiz-entero.png";
-import maizTaf from "./maiz-taf.png";
+const coctelFrutas = "/assets-webp/coctel-frutas.webp";
+const durazno = "/assets-webp/durazno.webp";
+const ensaladaFrutas = "/assets-webp/ensalada-frutas.webp";
+const guisantico = "/assets-webp/guisante-280.webp";
+const guisantes = "/assets-webp/guisantes.webp";
+const guisanteZanahoria = "/assets-webp/guisante-zanahoria.webp";
+const jugoDurazno = "/assets-webp/jugo-durazno.webp";
+const jugoMango = "/assets-webp/jugo-mango.webp";
+const jugoManzana = "/assets-webp/jugo-manzana.webp";
+const jugoPera = "/assets-webp/jugo-pera.webp";
+const ketchup = "/assets-webp/ketchup.webp";
+const maizEntero = "/assets-webp/maiz-entero.webp";
+const maizTaf = "/assets-webp/maiz-taf.webp";
 
 export {
     coctelFrutas,

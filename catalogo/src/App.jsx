@@ -4,12 +4,21 @@ import * as usImages from "./assets/us/index.js";
 import * as background from "./assets/background/index.js";
 import { useState, useRef, useEffect } from "react";
 import megaProductsVideo from "./assets/video/mega.mp4";
-import { Link, Routes, Route } from "react-router-dom";
-import Brands from "./views/brands.jsx";
-import Product from "./views/ProductDetail.jsx";
+import {
+  Link,
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import * as logos from "./assets/logos/index.js";
 import DotLoader from "react-spinners/DotLoader.js";
 import ScrollToTop from "./components/ScrollToTop.jsx";
+import { Suspense, lazy } from "react";
+
+const Brands = lazy(() => import("./views/brands.jsx"));
+const Product = lazy(() => import("./views/ProductDetail.jsx"));
+const Recetas = lazy(() => import("./views/recetas.jsx"));
 
 function App() {
   const [showHola, setShowHola] = useState(false);
@@ -29,6 +38,7 @@ function App() {
   ];
   const [selectedLogo, setSelectedLogo] = useState("pantera");
   const [loading, setLoading] = useState(true);
+  const [logoLoading, setLogoLoading] = useState(false);
   const missionText =
     "Nuestra misión es abastecer cada rincón de la región occidental con eficiencia y confiabilidad, impulsando el crecimiento de nuestros aliados comerciales y garantizando la satisfacción de los consumidores finales.";
   const visionText =
@@ -37,6 +47,35 @@ function App() {
     "Valores: confianza, transparencia y compromiso con la excelencia.";
 
   const videoRef = useRef(null);
+  const logoLoadingTimeoutRef = useRef(null);
+
+  // NUEVO: hooks de router
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const updateSelectedLogo = (key, shouldNavigate = false) => {
+    if (selectedLogo !== key) {
+      setLogoLoading(true);
+      setSelectedLogo(key);
+
+      if (logoLoadingTimeoutRef.current) {
+        clearTimeout(logoLoadingTimeoutRef.current);
+      }
+
+      logoLoadingTimeoutRef.current = setTimeout(() => {
+        setLogoLoading(false);
+      }, 1200);
+    }
+
+    if (shouldNavigate && location.pathname !== "/brands") {
+      navigate("/brands");
+    }
+  };
+
+  // handler modificado
+  const handleLogoClick = (key) => {
+    updateSelectedLogo(key, true);
+  };
 
   useEffect(() => {
     const v = videoRef.current;
@@ -119,6 +158,14 @@ function App() {
     return () => clearTimeout(fallback);
   }, []);
 
+  useEffect(() => {
+    return () => {
+      if (logoLoadingTimeoutRef.current) {
+        clearTimeout(logoLoadingTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const hideTimeout = useRef(null);
 
   const handleMouseEnter = () => {
@@ -153,53 +200,72 @@ function App() {
           <DotLoader color="#a259e6" size={40} />
         </div>
       )}
+      {logoLoading && !loading && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "rgba(255, 255, 255, 0.88)",
+            zIndex: 9998,
+          }}
+        >
+          <DotLoader color="#a259e6" size={40} />
+        </div>
+      )}
       <ScrollToTop />
       <header className="app-header">
         <img src={images.logo} alt="Logo" className="app-logo" />
         <div className="app-menu">
           <Link to="/">Quiénes Somos</Link>
-          <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <p
-              style={{
-                margin: 0,
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-              }}
+          {!loading && (
+            <div
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
-              Nuestras Marcas <span style={{ fontSize: "0.5em" }}>▼</span>
-            </p>
-            {showHola && (
-              <div
-                className="dropdown-logos"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+              <p
+                style={{
+                  margin: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                }}
               >
-                <div className="dropdown-logos-grid">
-                  {logoKeys.map((key) =>
-                    logos[key] ? (
-                      <Link
-                        to="/brands"
-                        key={key}
-                        onClick={() => setSelectedLogo(key)}
-                        className="dropdown-logo-link"
-                      >
-                        <img
-                          src={logos[key]}
-                          alt={key}
-                          className={`dropdown-logo-img ${
-                            selectedLogo === key ? "selected" : ""
-                          }`}
-                        />
-                      </Link>
-                    ) : null,
-                  )}
+                Nuestras Marcas <span style={{ fontSize: "0.5em" }}>▼</span>
+              </p>
+              {showHola && (
+                <div
+                  className="dropdown-logos"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="dropdown-logos-grid">
+                    {logoKeys.map((key) =>
+                      logos[key] ? (
+                        <span
+                          key={key}
+                          onClick={() => handleLogoClick(key)}
+                          className="dropdown-logo-link"
+                          style={{ cursor: "pointer" }}
+                        >
+                          <img
+                            src={logos[key]}
+                            alt={key}
+                            className={`dropdown-logo-img ${
+                              selectedLogo === key ? "selected" : ""
+                            }`}
+                          />
+                        </span>
+                      ) : null,
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
           <Link to="/recetas">Recetas</Link>
-          <Link to="/contacto">Contáctanos</Link>
         </div>
       </header>
       <Routes>
@@ -315,7 +381,7 @@ function App() {
                             selectedLogo === key ? "3px solid #623386" : "none",
                           borderRadius: "12px",
                         }}
-                        onClick={() => setSelectedLogo(key)}
+                        onClick={() => updateSelectedLogo(key)}
                       />
                     ))}
                   </div>
@@ -326,9 +392,28 @@ function App() {
         />
         <Route
           path="/brands"
-          element={<Brands selectedLogo={selectedLogo} />}
+          element={
+            <Suspense fallback={<DotLoader color="#a259e6" size={40} />}>
+              <Brands selectedLogo={selectedLogo} />
+            </Suspense>
+          }
         />
-        <Route path="/product" element={<Product />} />
+        <Route
+          path="/product"
+          element={
+            <Suspense fallback={<DotLoader color="#a259e6" size={40} />}>
+              <Product />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/recetas"
+          element={
+            <Suspense fallback={<DotLoader color="#a259e6" size={40} />}>
+              <Recetas />
+            </Suspense>
+          }
+        />
       </Routes>
     </div>
   );

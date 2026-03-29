@@ -1,18 +1,21 @@
-import cometin from "./cometin.png";
-import delMonte from "./delMonte.png";
-import lipton from "./lipton.png";
-import logo from "./logo.png";
-import panteraImage from "./pantera-image.png";
-import pantera from "./pantera.png";
-import reactLogo from "./react.svg";
-import tresB from "./tresB.png";
-import delCampo from "./delCampo.png";
-import isola from "./isola.png";
-import quien from "./quieneSomos.png";
-import lumalac from "./lumalac.png"
-import glup from "./glup.png"
-import faparca from "./faparca.png"
-import nieves from "./nieves.png"
+import { assetPath } from "./assetPath.js";
+
+const cometin = assetPath("cometin.webp");
+const delMonte = assetPath("delMonte.webp");
+const lipton = assetPath("lipton.webp");
+const logo = assetPath("logo.webp");
+const panteraImage = assetPath("pantera-image.webp");
+const pantera = assetPath("pantera.webp");
+const tresB = assetPath("tresB.webp");
+const delCampo = assetPath("delCampo.webp");
+const isola = assetPath("isola.webp");
+const quien = assetPath("quieneSomos.webp");
+const lumalac = assetPath("lumalac.webp");
+const glup = assetPath("glup.webp");
+const esmeralda = assetPath("esmeralda-fondo.webp");
+const vero = assetPath("vero-fondo.webp");
+const faparca = assetPath("faparca.webp");
+const nieves = assetPath("nieves.webp");
 
 export {
   cometin,
@@ -21,13 +24,14 @@ export {
   logo,
   panteraImage,
   pantera,
-  reactLogo,
   tresB,
   delCampo,
   isola,
   quien,
   lumalac,
   glup,
+  esmeralda,
+  vero,
   faparca ,
   nieves
 

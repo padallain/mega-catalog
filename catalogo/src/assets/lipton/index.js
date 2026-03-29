@@ -1,15 +1,15 @@
-import teChai from "./te-chai.png";
-import teCondeGris from "./te-condeGris.png";
-import teJengibrePina from "./te-jengibrePina.png";
-import teJengibreRosa from "./te-jengibreRosa.png";
-import teManzanilla from "./te-manzanilla.png";
-import teManzanillaMiel from "./te-manzanillaMiel.png";
-import teNaranja from "./te-naranja.png";
-import teNegro from "./te-negro.png";
-import tePomelo from "./te-pomelo.png";
-import teVerde from "./te-verde.png";
-import teVerdeCitricos from "./te-verdeCitrico.png";
-import teVerdeFrutosRojos from "./te-verdeFrutosRojos.png";
+const teChai = "/assets-webp/te-chai.webp";
+const teCondeGris = "/assets-webp/te-condeGris.webp";
+const teJengibrePina = "/assets-webp/te-jengibrePina.webp";
+const teJengibreRosa = "/assets-webp/te-jengibreRosa.webp";
+const teManzanilla = "/assets-webp/te-manzanilla.webp";
+const teManzanillaMiel = "/assets-webp/te-manzanillaMiel.webp";
+const teNaranja = "/assets-webp/te-naranja.webp";
+const teNegro = "/assets-webp/te-negro.webp";
+const tePomelo = "/assets-webp/te-pomelo.webp";
+const teVerde = "/assets-webp/te-verde.webp";
+const teVerdeCitricos = "/assets-webp/te-verdeCitrico.webp";
+const teVerdeFrutosRojos = "/assets-webp/te-verdeFrutosRojos.webp";
 
 export{
     teChai,

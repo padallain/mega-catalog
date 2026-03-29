@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
-import megaProductsVideo from "../assets/video/mega.mp4";
 import "./brands.css";
+
 import ProductCatalog from "../components/ProductCatalog.jsx";
 import ProductSlider from "../components/ProductSlider.jsx";
 import * as backgrounds from "../assets/background/index.js";
@@ -48,6 +47,8 @@ function getProductsByLogo(selectedLogo) {
   if (selectedLogo === "nieves") return nievesImages;
   return panteraImages;
 }
+
+
 
 const BRAND_INFO = {
   pantera: {
@@ -106,21 +107,13 @@ const BRAND_INFO = {
 export default function Brands({ selectedLogo }) {
   const selectedProducts = getProductsByLogo(selectedLogo);
 
-  const [currentProduct, setCurrentProduct] = useState(
-    selectedProducts && selectedProducts.length ? selectedProducts[0] : null
-  );
-
-  useEffect(() => {
-    setCurrentProduct(selectedProducts && selectedProducts.length ? selectedProducts[0] : null);
-  }, [selectedLogo, selectedProducts]);
-
   const brand = BRAND_INFO[selectedLogo] || BRAND_INFO["pantera"];
   const logoSrc = BRAND_LOGOS[selectedLogo] || BRAND_LOGOS.pantera;
   const bgSrc = backgrounds[selectedLogo] || backgrounds.pantera;
 
   return (
     <div className="body">
-       <img
+      <img
         src={bgSrc}
         alt={`Fondo ${selectedLogo}`}
         className="pantera-back-img"
@@ -140,7 +133,7 @@ export default function Brands({ selectedLogo }) {
           <p className="brands-p">{brand.desc}</p>
         </div>
 
-        <ProductSlider products={selectedProducts} onProductChange={setCurrentProduct} />
+        <ProductSlider products={selectedProducts} />
       </div>
 
       <ProductCatalog products={selectedProducts} />

@@ -1,10 +1,10 @@
-import sal500 from "./sal-500.png";
-import sal1000 from "./sal-1000.png";
-import salAhumada from "./sal-ahumada.png";
-import salAjo from "./sal-ajo.png";
-import salFinasHierbas from "./sal-finasHierbas.png";
-import salParrilla from "./sal-parrilla.png";
-import salRosada from "./sal-rosada.png";
+const sal500 = "/assets-webp/sal-500.webp";
+const sal1000 = "/assets-webp/sal-1000.webp";
+const salAhumada = "/assets-webp/sal-ahumada.webp";
+const salAjo = "/assets-webp/sal-ajo.webp";
+const salFinasHierbas = "/assets-webp/sal-finasHierbas.webp";
+const salParrilla = "/assets-webp/sal-parrilla.webp";
+const salRosada = "/assets-webp/sal-rosada.webp";
 
 export {
     sal500,

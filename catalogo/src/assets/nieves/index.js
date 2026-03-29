@@ -1,9 +1,9 @@
-import lavaplatosNaranja from "./lavaplatos-naranja.png";
-import lavaplatosLimón from "./lavaplatos-limon.png";
-import lavaplatosManzana from "./lavaplatos-manzana.png";
-import detergenteFloral from "./detergente-floral.png";
-import detergenteLimon from "./detergente-limon.png";
-import detergenteLavanda from "./detergente-lavanda.png";
+const lavaplatosNaranja = "/assets-webp/lavaplatos-naranja.webp";
+const lavaplatosLimón = "/assets-webp/lavaplatos-limon.webp";
+const lavaplatosManzana = "/assets-webp/lavaplatos-manzana.webp";
+const detergenteFloral = "/assets-webp/detergente-floral.webp";
+const detergenteLimon = "/assets-webp/detergente-limon.webp";
+const detergenteLavanda = "/assets-webp/detergente-lavanda.webp";
 
 export {
     lavaplatosNaranja,

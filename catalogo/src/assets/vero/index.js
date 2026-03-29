@@ -1,6 +1,6 @@
-import rojo100 from "./vero-rojo.png";
-import azul100 from "./vero-azul.png";
-import azulito50 from "./vero-azulito.png";
+const rojo100 = "/assets-webp/vero-rojo.webp";
+const azul100 = "/assets-webp/vero-azul.webp";
+const azulito50 = "/assets-webp/vero-azulito.webp";
 
 export{
     rojo100,

@@ -1,8 +1,8 @@
-import cola from "./cola.png";
-import kolita from "./kolita.png";
-import fresh from "./fresh.png";
-import justy from "./justy.png";
-import uva from "./uva.png";
+const cola = "/assets-webp/cola.webp";
+const kolita = "/assets-webp/kolita.webp";
+const fresh = "/assets-webp/fresh.webp";
+const justy = "/assets-webp/justy.webp";
+const uva = "/assets-webp/uva.webp";
 
 export{
     cola,

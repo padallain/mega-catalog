@@ -1,0 +1,19 @@
+{
+  "name": "Distribuidora Megaconfites",
+  "short_name": "Megaconfites",
+  "description": "Catalogo de productos para consulta offline.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#623386",
+  "orientation": "portrait",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "./logotipo-mega.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

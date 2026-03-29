@@ -33,56 +33,57 @@ export default function ProductSlider({ products }) {
 
   const currentProd = products[current];
 
-  return (
-    <div className="brands-slider-container">
-      <div className="brands-slider-row">
-        <button className="brands-slider-btn" onClick={prev} aria-label="Anterior">
-          &#x25C0;
-        </button>
+  // Evita error si currentProd es undefined
+if (!currentProd) return null;
 
-        <div
-          className={`brands-slider-content slide-${slideDir}`}
-          role="button"
-          tabIndex={0}
-          onClick={() => handleNavigate(currentProd)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              handleNavigate(currentProd);
-            }
-          }}
-          style={{ cursor: "pointer" }}
-        >
-          <div className="brands-slider-img-container">
-            <img
-              src={currentProd.src}
-              alt={currentProd.title}
-              className="brands-slider-img"
-            />
-          </div>
-          <div className="brands-slider-info">
-            <h1 className="brands-slider-title">{currentProd.title}</h1>
-            <p className="brands-slider-desc">{currentProd.desc}</p>
-            <a
-              href="#"
-              className="brands-slider-link"
-              onClick={(e) => {
-                e.preventDefault();
-                // stopPropagation so parent onClick isn't doubled
-                e.stopPropagation();
-                handleNavigate(currentProd);
-              }}
-            >
-              Ver más...
-            </a>
-          </div>
+return (
+  <div className="brands-slider-container">
+    <div className="brands-slider-row">
+      <button className="brands-slider-btn" onClick={prev} aria-label="Anterior">
+        &#x25C0;
+      </button>
+
+      <div
+        className={`brands-slider-content slide-${slideDir}`}
+        role="button"
+        tabIndex={0}
+        onClick={() => handleNavigate(currentProd)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleNavigate(currentProd);
+          }
+        }}
+        style={{ cursor: "pointer" }}
+      >
+        <div className="brands-slider-img-container">
+          <img
+            src={currentProd.src}
+            alt={currentProd.title}
+            className="brands-slider-img"
+          />
         </div>
-
-        <button className="brands-slider-btn" onClick={next} aria-label="Siguiente">
-          &#x25B6;
-        </button>
+        <div className="brands-slider-info">
+          <h1 className="brands-slider-title">{currentProd.title}</h1>
+          <p className="brands-slider-desc">{currentProd.desc}</p>
+          <a
+            href="#"
+            className="brands-slider-link"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleNavigate(currentProd);
+            }}
+          >
+            Ver más...
+          </a>
+        </div>
       </div>
+
+      <button className="brands-slider-btn" onClick={next} aria-label="Siguiente">
+        &#x25B6;
+      </button>
     </div>
-  );
+  </div>
+);
 }
-// ...existing code...

@@ -1,15 +1,17 @@
-import pantera from "./pantera-fondo.png";
-import cometin from "./cometin-fondo.png";
-import delMonte from "./delMonte-fondo.png";
-import lipton from "./lipton-fondo.png";
-import tresB from "./b-fondo.png";
-import glup from "./glup-fondo.png";
-import lumalac from "./lumalac-fondo.png";
-import delcampo from "./delcampo-fondo.png";
-import esmeralda from "./esmeralda-fondo.png";
-import vero from "./vero-fondo.png";
-import faparca from "./faparca-fondo.png";
-import nieves from "./nieves-fondo.png";
+import { assetPath } from "../assetPath.js";
+
+const pantera = assetPath("pantera-fondo.webp");
+const cometin = assetPath("cometin-fondo.webp");
+const delMonte = assetPath("delMonte-fondo.webp");
+const lipton = assetPath("lipton-fondo.webp");
+const tresB = assetPath("b-fondo.webp");
+const glup = assetPath("glup-fondo.webp");
+const lumalac = assetPath("lumalac-fondo.webp");
+const delcampo = assetPath("delcampo-fondo.webp");
+const esmeralda = assetPath("esmeralda-fondo.webp");
+const vero = assetPath("vero-fondo.webp");
+const faparca = assetPath("faparca-fondo.webp");
+const nieves = assetPath("nieves-fondo.webp");
 
 export {
   pantera,

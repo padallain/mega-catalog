@@ -1,15 +1,18 @@
-import pantera from "./pantera-back.png";
-import cometin from "./cometin-back.png";
-import delMonte from "./delMonte-back.png";
-import lipton from "./lipton-back.png";
-import tresB from "./tresb-back.png";
-import glup from "./glup-back.png";
-import lumalac from "./lumalac-back.png";
-import delcampo from "./delCampo-back.png";
-import esmeralda from "./esmeralda-back.png";
-import vero from "./vero-back.png";
-import faparca from "./faparca-back.png";
-import nieves from "./nieves-back.png";
+import { assetPath } from "../assetPath.js";
+
+const pantera = assetPath("pantera-back.webp");
+const cometin = assetPath("cometin-back.webp");
+const delMonte = assetPath("delMonte-back.webp");
+const lipton = assetPath("lipton-back.webp");
+const tresB = assetPath("tresb-back.webp");
+const glup = assetPath("glup-back.webp");
+const lumalac = assetPath("lumalac-back.webp");
+const delcampo = assetPath("delCampo-back.webp");
+const esmeralda = assetPath("esmeralda-back.webp");
+const vero = assetPath("vero-back.webp");
+const faparca = assetPath("faparca-back.webp");
+const nieves = assetPath("nieves-back.webp");
+const recetas = assetPath("recetas-back.webp");
 
 export {
   pantera,
@@ -23,5 +26,6 @@ export {
   esmeralda,
   vero,
   faparca,
-  nieves
+  nieves,
+  recetas
 };
