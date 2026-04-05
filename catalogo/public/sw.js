@@ -4,6 +4,7 @@ const APP_SHELL = [
   "./index.html",
   "./manifest.webmanifest",
   "./logotipo-mega.png",
+  // Puedes agregar aquí más archivos estáticos si lo deseas
 ];
 
 self.addEventListener("install", (event) => {
@@ -44,21 +45,43 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  // Estrategia especial para imágenes: cache-first
+  if (/\.(png|jpg|jpeg|webp|svg|gif)$/i.test(url.pathname)) {
+    event.respondWith(
+      caches.match(request).then((cachedResponse) => {
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+        return fetch(request).then((networkResponse) => {
+          if (!networkResponse || networkResponse.status !== 200) {
+            return networkResponse;
+          }
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, responseClone));
+          return networkResponse;
+        }).catch(() => {
+          // Imagen no disponible offline
+          return new Response('', { status: 404, statusText: 'Not found' });
+        });
+      })
+    );
+    return;
+  }
+
+  // Para otros archivos, cache-first
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
       if (cachedResponse) {
         return cachedResponse;
       }
-
       return fetch(request).then((networkResponse) => {
         if (!networkResponse || networkResponse.status !== 200) {
           return networkResponse;
         }
-
         const responseClone = networkResponse.clone();
         caches.open(CACHE_NAME).then((cache) => cache.put(request, responseClone));
         return networkResponse;
       });
     }),
-  );
+  });
 });
